@@ -106,3 +106,19 @@ body {
     color: #ffffff;
     font-size: 1.2em;
   }
+
+  #timer {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  #reset {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
