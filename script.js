@@ -2,8 +2,8 @@ const container = document.querySelector(".container");
 const playerTurn = document.getElementById("playerTurn");
 const startScreen = document.querySelector(".startScreen");
 const startButton = document.getElementById("start");
-const resetButton = document.getElementById("reset");
 const message = document.getElementById("message");
+const resetButton = document.getElementById("reset");
 const timerElement = document.getElementById("timer");
 let initialMatrix = [
   [0, 0, 0, 0, 0, 0, 0],
@@ -13,46 +13,45 @@ let initialMatrix = [
   [0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0],
 ];
-  let currentPlayer;
-  let timer;
+let currentPlayer;
+let timerInterval;
 
-  // Random Number Between Range
-  const generateRandomNumber = (min, max) =>
-    Math.floor(Math.random() * (max - min)) + min;
 
-  // Loop through array and check for same values
-  const verifyArray = (arrayElement) => {
-    let bool = false;
-    let elementCount = 0;
-    arrayElement.forEach((element, index) => {
-      if (element == currentPlayer) {
-        elementCount += 1;
-        if (elementCount == 4) {
-          bool = true;
-        }
-      } else {
-        elementCount = 0;
-      }
-    });
+ //Random Number Between Range
+const generateRandomNumber = (min, max) =>
+  Math.floor(Math.random() * (max - min)) + min;
+//Loop through array and check for same values
+const verifyArray = (arrayElement) => {
+  let bool = false;
+  let elementCount = 0;
+  arrayElement.forEach((element, index) => {
+    if (element == currentPlayer) {
+    elementCount += 1;
+    if (elementCount == 4) {
+      bool = true;
+    }
+  } else {
+    elementCount = 0;
+  }
+  });
     return bool;
-  };
+};
 
-  // Check for game over (Last step)
-  const gameOverCheck = () => {
-    let truthCount = 0;
-    for (let innerArray of initialMatrix) {
-      if (innerArray.every((val) => val != 0)) {
-        truthCount += 1;
-      } else {
-        return false;
-      }
+  //Check for game over(Last step)
+const gameOverCheck = () => {
+  let truthCounnt = 0;
+  for (let innerArray of initialMatrix) {
+    if (innerArray.every((val) => val != 0)) {
+      truthCounnt += 1;
+    } else {
+      return false;
     }
-    if (truthCount == 6) {
-      message.innerText = "Game Over";
-      clearInterval(timer); // Stop the timer
-      startScreen.classList.remove("hide");
-    }
-  };
+  }
+  if (truthCounnt == 6) {
+    message.innerText = "Game Over";
+    startScreen.classList.remove("hide");
+  }
+};
 
   // Check rows
   const checkAdjacentRowValues = (row) => {
@@ -164,23 +163,23 @@ let initialMatrix = [
       checkAdjacentDiagonalValues(row, column)
     );
   };
-  // Timer function
+// Timer function
+const startTimer = () => {
+  let timeLeft = 60; // 1 minute
+  const timeLeftElement = document.getElementById("timeLeft");
 
-  const startTimer = () => {
-    let timeLeft = 60; // 1 minute
-    const timerElement = document.getElementById("timer");
-  
-    timer = setInterval(() => {
-      if (timeLeft > 0) {
-        timeLeft--;
-        timerElement.textContent = timeLeft;
-      } else {
-        clearInterval(timer); // Stop the timer
-        message.innerHTML = "Time's up! Game Over";
-        startScreen.classList.remove("hide");
-      }
-    }, 1000);
-  };
+  timerInterval = setInterval(() => {
+    if (timeLeft > 0) {
+      timeLeft--;
+      timeLeftElement.textContent = timeLeft;
+    } else {
+      clearInterval(timerInterval); // Stop the timer
+      message.innerHTML = "Time's up! Game Over";
+      startScreen.classList.remove("hide");
+    }
+  }, 1000);
+};
+
   // Sets the circle to exact points
   const setPiece = (startCount, colValue) => {
     let rows = document.querySelectorAll(".grid-row");
@@ -218,6 +217,7 @@ const fillBox = (e) => {
 };
 
 // Create Matrix
+
 const matrixCreator = () => {
   for (let innerArray in initialMatrix) {
     let outerDiv = document.createElement("div");
@@ -238,23 +238,25 @@ const matrixCreator = () => {
   }
 };
 
-// Initialize game
-const startGame = () => {
-  // Between 1 and 2
+//Initialise game
+window.onload = startGame = async () => {
+  //Between 1 and 2
   currentPlayer = generateRandomNumber(1, 3);
   container.innerHTML = "";
-  matrixCreator();
+  await matrixCreator();
   playerTurn.innerHTML = `Player <span>${currentPlayer}'s</span> turn`;
-  startScreen.classList.add("hide");
-  startTimer();
+  startTimer(); // Start the timer
 };
-
-// Start the game when the button is clicked
-startButton.onclick = startGame;
-
-// Reset the game
-resetButton.onclick = () => {
-  clearInterval(timer); // Stop the timer
+//start game
+startButton.addEventListener("click", () => {
   startScreen.classList.add("hide");
   startGame();
-};
+});
+
+
+// Reset the game
+resetButton.addEventListener("click", () => {
+  clearInterval(timerInterval); // Stop the timer
+  startScreen.classList.add("hide");
+  startGame();
+});

@@ -1,124 +1,125 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: "Poppins", sans-serif;
-    background-image: url("BG.jpeg"); 
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background-image: url("BG.jpeg");
+}
 
+.wrapper {
+  width: 33.75em;
+  background-color: #ffffff;
+  position: absolute;
+  padding: 2em;
+  transform: translateX(-50%);
+  left: 50%;
+  top: 1.25em;
+  border-radius: 0.5em;
+}
 
-  }
-  .wrapper {
-    width: 33.75em;
-    background-color: transparent;
-    position: absolute;
-    padding: 2em;
-    transform: translateX(-50%);
-    left: 50%;
-    top: 1.25em;
-    border-radius: 0.5em;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+.container {
+  margin: 1.25em auto;
+  width: 33.75em;
+  border-radius: 0.6em;
+  overflow: hidden;
+  background-color: #416cea;
+}
 
-  }
-  .container {
-    margin: 1.25em auto;
-    width: 33.75em;
-    border-radius: 0.6em;
-    overflow: hidden;
-    background-color: #1d50e9;
-  }
-  #information {
-    display: grid;
-    width: 100%;
-    grid-template-columns: 1fr 1fr;
-  }
-  .player-wrappers {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
-  .player1:before {
-    content: "";
-    display: inline-block;
-    width: 3.12em;
-    height: 3.12em;
-    border-radius: 50%;
-    background: radial-gradient(#fff04e 1.12em, #ffc400 1.25em);
-  }
-  .player2:before {
-    content: "";
-    display: inline-block;
-    width: 3.12em;
-    height: 3.12em;
-    border-radius: 50%;
-    background: radial-gradient(#ff4747 1.12em, #c00303 1.25em);
-  }
-  #playerTurn {
-    margin: 1em 0;
-    text-align: right;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+#information {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+}
+.player-wrappers {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.player1:before {
+  content: "";
+  display: inline-block;
+  width: 3.12em;
+  height: 3.12em;
+  border-radius: 50%;
+  background: radial-gradient(#fff04e 1.12em, #ffc400 1.25em);
+}
+.player2:before {
+  content: "";
+  display: inline-block;
+  width: 3.12em;
+  height: 3.12em;
+  border-radius: 50%;
+  background: radial-gradient(#ff4747 1.12em, #c00303 1.25em);
+}
 
-  }
-  #playerTurn span {
-    font-weight: 600;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+#playerTurn {
+  margin-bottom: 1em;
+  text-align: right;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
 
-  }
-  .startScreen {
-    background-image: repeating-conic-gradient(#553c9a 0%, #553c9a 10%, #ee4b2b 10%, #ee4b2b 20%, 
-    #00c2cb 20%, #00c2cb 30%);
+#playerTurn span {
+  font-weight: 600;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
 
-    position: absolute;
-    top: 0;
-    height: 100vh;
-    width: 100vw;
-    background-color: #416cea;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .startScreen button {
-    background-color: #ffffff;
-    font-size: 1.4em;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    padding: 1em 2em;
-    border: none;
-    outline: none;
-    border-radius: 2em;
-    cursor: pointer;
-  }
-  .grid-row {
-    margin: 0 auto;
-    display: flex;
-  }
-  .grid-box {
-    width: 5em;
-    height: 5em;
-    display: grid;
-    place-items: center;
-    background: radial-gradient(white 1.37em, #416cea 1.43em);
-    cursor: pointer;
-  }
-  .hide {
-    display: none;
-  }
-  #message {
-    margin-bottom: 1em;
-    color: #ffffff;
-    font-size: 1.2em;
+.startScreen {
+  background-image: repeating-conic-gradient(#553c9a 0%, #553c9a 10%, #ee4b2b 10%, #ee4b2b 20%, #00c2cb 20%, #00c2cb 30%);
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #416cea;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   }
 
-  #timer {
-    margin-bottom: 10px;
-    font-size: 18px;
-  }
-  
-  #reset {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #f44336;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
+.startScreen button {
+  background-color: #ffffff;
+  font-size: 1.4em;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  padding: 1em 2em;
+  border: none;
+  outline: none;
+  border-radius: 2em;
+  cursor: pointer;
+}
+
+
+#message {
+  margin-bottom: 1em;
+  color: #ffffff;
+  font-size: 1.2em;
+}
+.grid-row {
+  margin: 0 auto;
+  display: flex;
+}
+.grid-box {
+  width: 5em;
+  height: 5em;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(white 1.37em, #416cea 1.43em);
+  cursor: pointer;
+}
+.hide {
+  display: none;
+}
+
+
+#timer {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+#reset {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
